@@ -181,19 +181,19 @@ Se configuró el panel administrativo de Django para permitir operaciones CRUD a
 
 ## Crear Estudiante
 
-> Insertar captura aquí
+![crear Estudiante](2.jpeg)
 
 ---
 
 ## Crear Curso
 
-> Insertar captura aquí
+![crear Curso](3.jpeg)
 
 ---
 
 ## Matrícula de Estudiante
 
-> Insertar captura aquí
+![crear Estudiante](1.jpeg)
 
 ---
 
