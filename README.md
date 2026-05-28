@@ -13,34 +13,6 @@ El objetivo principal de esta práctica es implementar:
 
 ---
 
-# Autor
-
-| Autor | Participación |
-|---|---|
-| Richart Escobedo | 100% |
-
----
-
-# Entregables
-
-## Repositorio GitHub
-
-```bash
-git clone https://github.com/rescobedoq/enrollments.git
-```
-
-## Video Demostrativo
-
-> Reemplazar con el enlace público del video.
-
-## Informe PDF
-
-```text
-DAW_lab06_admin.pdf
-```
-
----
-
 # Tecnologías Utilizadas
 
 - Python
@@ -57,8 +29,8 @@ DAW_lab06_admin.pdf
 ## 1. Clonar el repositorio
 
 ```bash
-git clone https://github.com/rescobedoq/enrollments.git
-cd enrollments
+git clone https://github.com/SantyGutRamos/Daw_laboratorio6.git
+cd Daw_laboratorio6
 ```
 
 ---
@@ -140,7 +112,6 @@ Los modelos fueron desarrollados en archivos independientes para mantener una ar
 
 ## Características Implementadas
 
-- Nomenclatura en plural y CamelCase
 - Campos obligatorios de auditoría
 - Validadores personalizados
 - Sobreescritura del método `save()`
@@ -226,15 +197,7 @@ Se configuró el panel administrativo de Django para permitir operaciones CRUD a
 
 ---
 
-# Respaldo de Base de Datos
 
-El proyecto incluye un respaldo con información de prueba.
-
-## Restaurar datos
-
-```bash
-python manage.py loaddata database_backup.json
-```
 
 ---
 
@@ -246,18 +209,5 @@ python manage.py loaddata database_backup.json
 - PostgreSQL ofrece una integración robusta y eficiente con Django.
 - La modularización mejora la mantenibilidad y escalabilidad del proyecto.
 
----
-
-# Estado del Proyecto
-
-- Proyecto Finalizado
-- Migraciones Implementadas
-- Django Admin Configurado
-- Validaciones Aplicadas
-- Relaciones entre Tablas Operativas
-
----
-
-# Licencia
-
-Proyecto desarrollado únicamente con fines académicos para el curso de Desarrollo de Aplicaciones Web (DAW).
+# URL del video
+-

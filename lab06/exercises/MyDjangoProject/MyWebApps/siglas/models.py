@@ -41,16 +41,17 @@ class Users(models.Model):
         models.DO_NOTHING,
         db_column='created_id',
         blank=True,
-        null=True
+        null=True,
+        related_name='users_created'
     )
 
     modified_0 = models.ForeignKey(
         'self',
         models.DO_NOTHING,
         db_column='modified_id',
-        related_name='users_modified_0_set',
         blank=True,
-        null=True
+        null=True,
+        related_name='users_modified'
     )
 
     class Meta:
@@ -58,6 +59,23 @@ class Users(models.Model):
         db_table = 'users'
         verbose_name = 'User'
         verbose_name_plural = 'Users'
+
+        indexes = [
+            models.Index(
+                fields=['username'],
+                name='idx_users_username'
+            ),
+
+            models.Index(
+                fields=['email'],
+                name='idx_users_email'
+            ),
+
+            models.Index(
+                fields=['status'],
+                name='idx_users_status'
+            ),
+        ]
 
     def __str__(self):
         return self.username
@@ -108,9 +126,9 @@ class Student(models.Model):
     user = models.ForeignKey(
         'Users',
         models.DO_NOTHING,
+        db_column='user_id',
         blank=True,
-        null=True,
-        db_column='user_id'
+        null=True
     )
 
     status = models.BooleanField(
@@ -136,18 +154,18 @@ class Student(models.Model):
         'Users',
         models.DO_NOTHING,
         db_column='created_id',
-        related_name='students_created_0_set',
         blank=True,
-        null=True
+        null=True,
+        related_name='students_created'
     )
 
     modified_0 = models.ForeignKey(
         'Users',
         models.DO_NOTHING,
         db_column='modified_id',
-        related_name='students_modified_0_set',
         blank=True,
-        null=True
+        null=True,
+        related_name='students_modified'
     )
 
     class Meta:
@@ -155,6 +173,28 @@ class Student(models.Model):
         db_table = 'students'
         verbose_name = 'Student'
         verbose_name_plural = 'Students'
+
+        indexes = [
+            models.Index(
+                fields=['fathersurname'],
+                name='idx_students_father'
+            ),
+
+            models.Index(
+                fields=['mothersurname'],
+                name='idx_students_mother'
+            ),
+
+            models.Index(
+                fields=['status'],
+                name='idx_students_status'
+            ),
+
+            models.Index(
+                fields=['user'],
+                name='idx_students_user'
+            ),
+        ]
 
     def __str__(self):
         return f"{self.fathersurname} {self.mothersurname}, {self.names}"
@@ -200,16 +240,17 @@ class Courses(models.Model):
         models.DO_NOTHING,
         db_column='created_id',
         blank=True,
-        null=True
+        null=True,
+        related_name='courses_created'
     )
 
     modified_0 = models.ForeignKey(
         'Users',
         models.DO_NOTHING,
         db_column='modified_id',
-        related_name='courses_modified_0_set',
         blank=True,
-        null=True
+        null=True,
+        related_name='courses_modified'
     )
 
     class Meta:
@@ -217,6 +258,18 @@ class Courses(models.Model):
         db_table = 'courses'
         verbose_name = 'Course'
         verbose_name_plural = 'Courses'
+
+        indexes = [
+            models.Index(
+                fields=['coursename'],
+                name='idx_courses_name'
+            ),
+
+            models.Index(
+                fields=['status'],
+                name='idx_courses_status'
+            ),
+        ]
 
     def __str__(self):
         return self.coursename
@@ -266,16 +319,17 @@ class CoursesStudents(models.Model):
         models.DO_NOTHING,
         db_column='created_id',
         blank=True,
-        null=True
+        null=True,
+        related_name='enrollments_created'
     )
 
     modified_0 = models.ForeignKey(
         'Users',
         models.DO_NOTHING,
         db_column='modified_id',
-        related_name='coursesstudents_modified_0_set',
         blank=True,
-        null=True
+        null=True,
+        related_name='enrollments_modified'
     )
 
     class Meta:
@@ -283,7 +337,32 @@ class CoursesStudents(models.Model):
         db_table = 'courses_students'
         verbose_name = 'Enrollment'
         verbose_name_plural = 'Enrollments'
-        unique_together = (('course', 'student'),)
+
+        unique_together = (
+            ('course', 'student'),
+        )
+
+        indexes = [
+            models.Index(
+                fields=['student'],
+                name='idx_enroll_student'
+            ),
+
+            models.Index(
+                fields=['course'],
+                name='idx_enroll_course'
+            ),
+
+            models.Index(
+                fields=['status'],
+                name='idx_enroll_status'
+            ),
+
+            models.Index(
+                fields=['course', 'student'],
+                name='idx_enroll_course_student'
+            ),
+        ]
 
     def __str__(self):
         return f"{self.student} - {self.course}"
