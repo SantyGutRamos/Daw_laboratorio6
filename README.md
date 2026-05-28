@@ -210,4 +210,4 @@ Se configuró el panel administrativo de Django para permitir operaciones CRUD a
 - La modularización mejora la mantenibilidad y escalabilidad del proyecto.
 
 # URL del video
--
+-https://www.youtube.com/watch?v=HDzeso6qniM
