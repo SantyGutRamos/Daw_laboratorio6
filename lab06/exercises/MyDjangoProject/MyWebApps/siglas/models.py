@@ -13,8 +13,8 @@ class Courses(models.Model):
     credits = models.IntegerField()
     description = models.TextField(blank=True, null=True)
     status = models.CharField(max_length=20, blank=True, null=True)
-    created = models.DateTimeField(blank=True, null=True)
-    modified = models.DateTimeField(blank=True, null=True)
+    created = models.DateTimeField(auto_now_add=True, blank=True, null=True)  # <-- Automático al crear
+    modified = models.DateTimeField(auto_now=True, blank=True, null=True)     # <-- Automático al editar
     created_0 = models.ForeignKey('Users', models.DO_NOTHING, db_column='created_id', blank=True, null=True)  # Field renamed because of name conflict.
     modified_0 = models.ForeignKey('Users', models.DO_NOTHING, db_column='modified_id', related_name='courses_modified_0_set', blank=True, null=True)  # Field renamed because of name conflict.
 
@@ -26,10 +26,10 @@ class Courses(models.Model):
 class CoursesStudents(models.Model):
     student = models.ForeignKey('Student', models.DO_NOTHING) 
     course = models.ForeignKey('Courses', models.DO_NOTHING)
-    enrollmentdate = models.DateTimeField(blank=True, null=True)
+    enrollmentdate = models.DateTimeField(auto_now_add=True, blank=True, null=True) # <-- Automático al matricular
     status = models.CharField(max_length=20, blank=True, null=True)
-    created = models.DateTimeField(blank=True, null=True)
-    modified = models.DateTimeField(blank=True, null=True)
+    created = models.DateTimeField(auto_now_add=True, blank=True, null=True)  # <-- Automático al crear
+    modified = models.DateTimeField(auto_now=True, blank=True, null=True)     # <-- Automático al editar
     created_0 = models.ForeignKey('Users', models.DO_NOTHING, db_column='created_id', blank=True, null=True)  # Field renamed because of name conflict.
     modified_0 = models.ForeignKey('Users', models.DO_NOTHING, db_column='modified_id', related_name='coursesstudents_modified_0_set', blank=True, null=True)  # Field renamed because of name conflict.
 
@@ -49,8 +49,8 @@ class Student(models.Model):
     note = models.TextField(blank=True, null=True)
     user = models.ForeignKey('Users', models.DO_NOTHING, blank=True, null=True)
     status = models.CharField(max_length=20, blank=True, null=True)
-    created = models.DateTimeField(blank=True, null=True)
-    modified = models.DateTimeField(blank=True, null=True)
+    created = models.DateTimeField(auto_now_add=True, blank=True, null=True)  # <-- Automático al crear
+    modified = models.DateTimeField(auto_now=True, blank=True, null=True)     # <-- Automático al editar
     created_0 = models.ForeignKey('Users', models.DO_NOTHING, db_column='created_id', related_name='students_created_0_set', blank=True, null=True)  # Field renamed because of name conflict.
     modified_0 = models.ForeignKey('Users', models.DO_NOTHING, db_column='modified_id', related_name='students_modified_0_set', blank=True, null=True)  # Field renamed because of name conflict.
 
@@ -64,8 +64,8 @@ class Users(models.Model):
     email = models.CharField(max_length=100)
     password = models.CharField(max_length=255)
     status = models.CharField(max_length=20, blank=True, null=True)
-    created = models.DateTimeField(blank=True, null=True)
-    modified = models.DateTimeField(blank=True, null=True)
+    created = models.DateTimeField(auto_now_add=True, blank=True, null=True)  # <-- Automático al crear
+    modified = models.DateTimeField(auto_now=True, blank=True, null=True)     # <-- Automático al editar
     created_0 = models.ForeignKey('self', models.DO_NOTHING, db_column='created_id', blank=True, null=True)  # Field renamed because of name conflict.
     modified_0 = models.ForeignKey('self', models.DO_NOTHING, db_column='modified_id', related_name='users_modified_0_set', blank=True, null=True)  # Field renamed because of name conflict.
 
